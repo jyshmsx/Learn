@@ -11,7 +11,11 @@ class Circle
     }
     void show()
     {
-        cout<<"The Circle's Area is "<<3.14 * pow(radius,2)<<endl;
+        cout<<"The Circle's Area is "<<getArea()<<endl;
+    }
+    double getArea()
+    {
+        return 3.14 * pow(radius,2);
     }
 };
 class Rectangle{
@@ -24,7 +28,11 @@ class Rectangle{
     }
     void show()
     {
-        cout<<"The Rectangle's Area is "<<high * width<<endl;
+        cout<<"The Rectangle's Area is "<<getArea()<<endl;
+    }
+    double getArea()
+    {
+        return high * width;
     }
 };
 class Product: public Circle, public Rectangle
@@ -36,7 +44,7 @@ class Product: public Circle, public Rectangle
     }
     void show()
     {
-        cout<<"The Product's Area is "<<high * width - 3.14 * pow(radius,2)<<endl;
+        cout<<"The Product's Area is "<<Rectangle::getArea() - Circle::getArea()<<endl;
     }
 };
 
