@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class Cone{
+class Cone
+{
 private:
     double radius;
     double height;
