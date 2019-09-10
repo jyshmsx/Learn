@@ -2,34 +2,34 @@ package inclass.task.third;
 
 class Student  implements Cloneable{
     private int id;
-    private int year;
+    private int age;
     private String name;
     
     public Student()
     {
         this.id = 0;
-        this.year = 0;
+        this.age = 0;
         this.name = "";
     }
-    public Student(int i, String n ,int y)
+    public Student(int i, String n ,int a)
     {
         this.id = i;
-        this.year = y;
+        this.age = a;
         this.name = n;
     }
-    public void set(int i, String n, int y)
+    public void set(int i, String n, int a)
     {
         this.id = i;
-        this.year = y; 
+        this.age = a; 
         this.name = n;
     }
     public int getId()
     {
         return this.id;
     }
-    public int getYear()
+    public int getAge()
     {
-        return this.year;
+        return this.age;
     }
     public String getName()
     {
@@ -37,12 +37,19 @@ class Student  implements Cloneable{
     }
     public String toString()
     {
-        return "姓名: " + this.name + " 学号: " + this.id + " 年龄: " + this.year;
+        return "姓名: " + this.name + " 学号: " + this.id + " 年龄: " + this.age;
     }
-    public boolean equals(Student obj)
+    public boolean equals(Object obj)
     {
-        boolean equ = obj.id == this.id && obj.name == this.name && obj.year == this.year;
-        return equ;
+        if(obj instanceof Student)
+        {
+            Student e = (Student) obj;
+            boolean re = e.id == this.id && e.name == this.name && e.age == this.age;
+            return re;
+        }
+        else
+            return false;
+        
     }
     // public Object clone()
     // {
