@@ -44,23 +44,22 @@ class Student  implements Cloneable{
         if(obj instanceof Student)
         {
             Student e = (Student) obj;
-            boolean re = e.id == this.id && e.name == this.name && e.age == this.age;
+            boolean re = e.id == this.id && this.name.equals(e.name) && e.age == this.age;
             return re;
         }
         else
             return false;
-        
     }
-    // public Object clone()
-    // {
-    //     Student cl = new Student(this.id, this.name, this.year);
-    //     // try{
-    //     //     cl = (Student)super.clone();
-    //     // }catch(CloneNotSupportedException e)
-    //     // {
-    //     //     e.printStackTrace();
-    //     // }
-    //     return cl;
-    // }
+    public Object clone()
+    {
+        Student cl = new Student(this.id, this.name, this.age);
+        try{
+            cl = (Student)super.clone();
+        }catch(CloneNotSupportedException e)
+        {
+            e.printStackTrace();
+        }
+        return cl;
+    }
     
 }
