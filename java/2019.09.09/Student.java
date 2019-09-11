@@ -50,6 +50,7 @@ class Student  implements Cloneable{
         else
             return false;
     }
+	//clone()方法，
     public Object clone()
     {
         Student cl = new Student(this.id, this.name, this.age);
