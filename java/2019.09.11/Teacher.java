@@ -48,8 +48,4 @@ public class Teacher {
         } else
             return false;
     }
-
-
-    
-
 }
