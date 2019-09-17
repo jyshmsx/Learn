@@ -75,9 +75,16 @@ class Student  implements Cloneable{
         // hash = 17 * hash + this.name.hashCode();
         // return hash;
     }
-    //比年龄大小
-    public boolean tAge()
+    //比年龄大小并返回年龄大的的年龄
+    public int tAge(Student obj)
     {
-        return true;
+        if(this.age >= obj.age)
+        {
+            return this.age;
+        }
+        else
+        {
+            return obj.age;
+        }
     }
 }
