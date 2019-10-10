@@ -1,9 +1,10 @@
 package inclass.experiment.first;
 
-
+//GuessNumber类，进行Number类的比较。
 public class GuessNumber{
     private Number anNumber, guNumber;
     private char [] flag;
+    private char [] flagA;
     private int A, B;
 
     public GuessNumber(Number nb)
@@ -18,16 +19,7 @@ public class GuessNumber{
         A = 0;
         B = 0;
         flag = new char[] {'0','0','0','0'};
-    }
-
-    private void setFlag(int i,char a)
-    {
-        flag[i] = a;
-    }
-
-    private char getFlag(int i)
-    {
-        return flag[i];
+        flagA = new char [] {'0', '0', '0', '0'};
     }
 
     private void compareA()
@@ -36,7 +28,8 @@ public class GuessNumber{
         {
             if(anNumber.getNumber(i) == guNumber.getNumber(i))
             {
-                setFlag(i, 'A');
+                flag[i] = 'A';
+                flagA[i] = 'A';
                 A++;
             }
         }
@@ -48,52 +41,41 @@ public class GuessNumber{
         {
             for(int j = 0; j < 4; j++)
             {
-                if(anNumber.getNumber(j) == guNumber.getNumber(i) && this.getFlag(i) == '0' && this.getFlag(j) == '0')
+                if(anNumber.getNumber(j) == guNumber.getNumber(i) && this.flag[i] == '0' && flagA[j] == '0')
                 {
-                    this.setFlag(i, 'B');
+                    flag[i] = 'B';
+                    flagA[j] = 'B';
                     B++;
                 }
             }
         }
     }
 
+    private void showAnser()
+    {
+        System.out.print(A);
+        System.out.print('A');
+        System.out.print(B);
+        System.out.println('B');
+    }
+
+
     private boolean compareNumber()
     {
         this.clearFlag();
         compareA();
         compareB();
-        System.out.print(A);
-        System.out.print('A');
-        System.out.print(B);
-        System.out.println('B');
-
-        // for(int i = 0; i < 4; i++)
-        // {
-        //     System.out.println(flag[i]);
-        // }
-        if(A == 4)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        showAnser();
+        return A == 4;
     }
 
     public void guessNumber()
     {
-        guNumber.setNumber();
-        while(!compareNumber())
-        {
-            
+        do{
+            System.out.print("猜测数字: ");
             guNumber.setNumber();
-        }
+        }while(!compareNumber());
         System.out.println("You Win!");
     }
 
-    public void showAnser()
-    {
-        anNumber.showNumber();
-    }
 }
